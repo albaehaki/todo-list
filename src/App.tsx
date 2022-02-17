@@ -17,13 +17,14 @@ function App() {
     console.log(text);
     setToDo([...ToDo, text]);
     setText("");
+    e.target.reset();
   };
 
   return (
     <div className="grid text-gray-500 font-mono">
       <p className="m-auto my-5">apa yang ingin anda lakukan hari ini...</p>
       <Input state={text} onchange={onchange} onsubmit={onsubmit} />
-      <Output />
+      <Output todo={ToDo} />
     </div>
   );
 }
