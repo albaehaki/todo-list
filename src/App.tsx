@@ -7,6 +7,7 @@ import Output from "./component/Output";
 function App() {
   const [text, setText] = useState<string>("");
   const [ToDo, setToDo] = useState<any>([]);
+  const [done, setDone] = useState<any>([]);
 
   const onchange = (e: any) => {
     setText(e.target.value);
@@ -18,6 +19,10 @@ function App() {
     setToDo([...ToDo, text]);
     setText("");
     e.target.reset();
+  };
+
+  const selesai = (e: any) => {
+    setDone(ToDo.filter((a: any) => ))
   };
 
   return (
