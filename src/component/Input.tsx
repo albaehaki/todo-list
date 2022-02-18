@@ -5,7 +5,7 @@ function Input({ text, onchange, onsubmit }: any) {
     <div className="grid">
       <form className="m-auto w-screen grid" onSubmit={onsubmit}>
         <input
-          className="m-auto outline-none px-2 py-1 rounded-sm w-screen md:w-1/2"
+          className="m-auto resize-y outline-none px-2 py-1 rounded-sm w-10/12 sm:w-8/12 md:w-1/2"
           placeholder="tulis tugas..."
           type="text"
           name="text"

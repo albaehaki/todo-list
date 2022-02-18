@@ -22,7 +22,7 @@ function App() {
   };
 
   const selesai = (e: any) => {
-    setDone(ToDo.filter((a: any) => ))
+    setDone(ToDo.filter((a: any) => {}));
   };
 
   return (
