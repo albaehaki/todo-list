@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Output({ todo }: any) {
+function Output({ todo, hapus, setKey }: any) {
   const [radio, setRadio] = useState<string>("");
 
   return (
@@ -11,10 +11,11 @@ function Output({ todo }: any) {
             <div key={i} className="flex px-2 border-b-[1px] py-1 flex-row">
               <input
                 className="my-auto accent-gray-500"
-                value={radio}
-                onClick={(e: any) => {
-                  console.log(e.target.value);
+                onChange={(e: any) => {
+                  setKey(i);
+                  hapus(e);
                 }}
+                value={i}
                 type="checkbox"
               />
               <p className="px-2 break-all">{todo}</p>
