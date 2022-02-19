@@ -8,7 +8,7 @@ function App() {
   const [text, setText] = useState<string>("");
   const [ToDo, setToDo] = useState<any>([]);
   const [done, setDone] = useState<any>([]);
-  const [stasiun, setStasiun] = useState<any>([]);
+  const [musnah, setMusnah] = useState<any>([]);
 
   const onchange = (e: any) => {
     setText(e.target.value);
@@ -23,11 +23,17 @@ function App() {
   };
 
   const balik = (e: any) => {
-    console.log("hallo");
-    console.log(done.filter((a: any) => a == done[e.target.value]));
-
     setToDo(ToDo.concat(done.filter((a: any) => a == done[e.target.value])));
     setDone(done.filter((a: any) => a !== done[e.target.value]));
+  };
+
+  const hapus = (e: any) => {
+    if (e.target.name === "todo") {
+      setToDo(ToDo.filter((a: any) => a !== ToDo[e.target.value]));
+    } else {
+      setDone(done.filter((a: any) => a !== done[e.target.value]));
+    }
+    //setToDo(ToDo.filter((a: any) => a !== ToDo[e.target.value]));
   };
 
   const selesai = (e: any) => {
@@ -47,7 +53,13 @@ function App() {
     <div className="grid text-gray-500 font-mono">
       <p className="m-auto my-5">apa yang ingin anda lakukan hari ini...</p>
       <Input state={text} onchange={onchange} onsubmit={onsubmit} />
-      <Output todo={ToDo} balik={balik} done={done} hapus={selesai} />
+      <Output
+        todo={ToDo}
+        musnah={hapus}
+        balik={balik}
+        done={done}
+        hapus={selesai}
+      />
     </div>
   );
 }
