@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Output({ todo, hapus, done }: any) {
+function Output({ todo, hapus, done, balik }: any) {
   const [radio, setRadio] = useState<string>("");
 
   return (
@@ -23,13 +23,16 @@ function Output({ todo, hapus, done }: any) {
         })}
       </div>
       <div className="m-auto w-10/12 sm:w-8/12 md:w-1/2 grid">
-        <p className="px-2 py-1">selesai</p>
+        <p className="px-2 py-3">selesai</p>
         {done.map((todo: any, i: number) => {
           return (
             <div key={i} className="flex px-2 border-b-[1px] py-1 flex-row">
               <input
                 className="my-auto accent-gray-500"
                 value={i}
+                onClick={(e: any) => {
+                  balik(e);
+                }}
                 checked
                 type="checkbox"
               />

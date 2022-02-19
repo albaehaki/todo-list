@@ -22,10 +22,16 @@ function App() {
     e.target.reset();
   };
 
+  const balik = (e: any) => {
+    console.log("hallo");
+    console.log(done.filter((a: any) => a == done[e.target.value]));
+
+    setToDo(ToDo.concat(done.filter((a: any) => a == done[e.target.value])));
+    setDone(done.filter((a: any) => a !== done[e.target.value]));
+  };
+
   const selesai = (e: any) => {
     if (e.target.checked) {
-      console.log(ToDo[e.target.value]);
-
       setDone(done.concat(ToDo.filter((a: any) => a == ToDo[e.target.value])));
 
       setToDo(ToDo.filter((a: any) => a !== ToDo[e.target.value]));
@@ -41,7 +47,7 @@ function App() {
     <div className="grid text-gray-500 font-mono">
       <p className="m-auto my-5">apa yang ingin anda lakukan hari ini...</p>
       <Input state={text} onchange={onchange} onsubmit={onsubmit} />
-      <Output todo={ToDo} done={done} hapus={selesai} />
+      <Output todo={ToDo} balik={balik} done={done} hapus={selesai} />
     </div>
   );
 }
