@@ -8,7 +8,7 @@ function App() {
   const [text, setText] = useState<string>("");
   const [ToDo, setToDo] = useState<any>([]);
   const [done, setDone] = useState<any>([]);
-  const [key, setKey] = useState<any>();
+  const [stasiun, setStasiun] = useState<any>([]);
 
   const onchange = (e: any) => {
     setText(e.target.value);
@@ -25,9 +25,14 @@ function App() {
   const selesai = (e: any) => {
     if (e.target.checked) {
       console.log(ToDo[e.target.value]);
-      console.log(ToDo[e.target.value].id);
-      console.log(ToDo.filter((a: any) => a !== a[e.target.value]));
-      setDone(ToDo.filter((a: any) => a.includes(a[e.target.value])));
+
+      setDone(done.concat(ToDo.filter((a: any) => a == ToDo[e.target.value])));
+
+      setToDo(ToDo.filter((a: any) => a !== ToDo[e.target.value]));
+
+      if (e.target.checked) {
+        e.target.checked = false;
+      }
     } else {
     }
   };
@@ -36,7 +41,7 @@ function App() {
     <div className="grid text-gray-500 font-mono">
       <p className="m-auto my-5">apa yang ingin anda lakukan hari ini...</p>
       <Input state={text} onchange={onchange} onsubmit={onsubmit} />
-      <Output todo={ToDo} hapus={selesai} setKey={setKey} />
+      <Output todo={ToDo} done={done} hapus={selesai} />
     </div>
   );
 }
