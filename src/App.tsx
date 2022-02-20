@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Input from "./component/Input";
 import Output from "./component/Output";
@@ -16,14 +15,21 @@ function App() {
 
   const onsubmit = (e: any) => {
     e.preventDefault();
-    console.log(text);
-    setToDo([...ToDo, text]);
+    const kuy = new Date();
+    console.log(Date());
+    setToDo([...ToDo, `${text}  (${kuy.toLocaleTimeString()})`]);
+
+    // if (ToDo.some((a: any) => a === text)) {
+    //   setToDo([...ToDo, `${text}  (${kuy.toLocaleTimeString()})`]);
+    // } else {
+    //   setToDo([...ToDo, text]);
+    // }
     setText("");
     e.target.reset();
   };
 
   const balik = (e: any) => {
-    setToDo(ToDo.concat(done.filter((a: any) => a == done[e.target.value])));
+    setToDo(ToDo.concat(done.filter((a: any) => a === done[e.target.value])));
     setDone(done.filter((a: any) => a !== done[e.target.value]));
   };
 
@@ -33,12 +39,11 @@ function App() {
     } else {
       setDone(done.filter((a: any) => a !== done[e.target.value]));
     }
-    //setToDo(ToDo.filter((a: any) => a !== ToDo[e.target.value]));
   };
 
   const selesai = (e: any) => {
     if (e.target.checked) {
-      setDone(done.concat(ToDo.filter((a: any) => a == ToDo[e.target.value])));
+      setDone(done.concat(ToDo.filter((a: any) => a === ToDo[e.target.value])));
 
       setToDo(ToDo.filter((a: any) => a !== ToDo[e.target.value]));
 
