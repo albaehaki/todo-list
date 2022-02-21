@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Input from "./component/Input";
 import Output from "./component/Output";
+import { gsap } from "gsap";
 
 function App() {
   const [text, setText] = useState<string>("");
   const [ToDo, setToDo] = useState<any>([]);
   const [done, setDone] = useState<any>([]);
-  const [musnah, setMusnah] = useState<any>([]);
 
   const onchange = (e: any) => {
     setText(e.target.value);
@@ -15,15 +15,8 @@ function App() {
 
   const onsubmit = (e: any) => {
     e.preventDefault();
-    const kuy = new Date();
-    console.log(Date());
-    setToDo([...ToDo, `${text}  (${kuy.toLocaleTimeString()})`]);
-
-    // if (ToDo.some((a: any) => a === text)) {
-    //   setToDo([...ToDo, `${text}  (${kuy.toLocaleTimeString()})`]);
-    // } else {
-    //   setToDo([...ToDo, text]);
-    // }
+    const date = new Date();
+    setToDo([...ToDo, `${text}  (${date.toLocaleTimeString()})`]);
     setText("");
     e.target.reset();
   };

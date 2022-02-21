@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
 function Output({ todo, hapus, done, balik, musnah }: any) {
+  const planRef = useRef<any>();
+
+  useEffect(() => {
+    gsap.fromTo(planRef.current, { opacity: 0 }, { opacity: 1 });
+  });
+
   return (
     <div className="grid">
       <div className="m-auto w-10/12 sm:w-8/12 md:w-1/2 grid">
@@ -8,6 +15,7 @@ function Output({ todo, hapus, done, balik, musnah }: any) {
           return (
             <div
               key={i}
+              ref={planRef}
               className="grid px-2 border-b-[1px] py-1 grid-flow-col grid-cols-12"
             >
               <input
@@ -39,6 +47,7 @@ function Output({ todo, hapus, done, balik, musnah }: any) {
           return (
             <div
               key={i}
+              ref={planRef}
               className="grid px-2 border-b-[1px] py-1 grid-flow-col grid-cols-12"
             >
               <input
@@ -68,6 +77,5 @@ function Output({ todo, hapus, done, balik, musnah }: any) {
     </div>
   );
 }
-//<p className="px-2">{todo}</p>
 
 export default Output;
