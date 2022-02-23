@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Input from "./component/Input";
 import Output from "./component/Output";
-import { gsap } from "gsap";
 
 function App() {
   const [text, setText] = useState<string>("");

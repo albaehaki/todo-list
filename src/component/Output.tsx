@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 function Output({ todo, hapus, done, balik, musnah }: any) {
   const planRef = useRef<any>();
 
   useEffect(() => {
-    gsap.fromTo(planRef.current, { opacity: 0 }, { opacity: 1 });
+    gsap.fromTo(planRef.current, { opacity: 0 }, { opacity: 1, duration: 1 });
   });
 
   return (
