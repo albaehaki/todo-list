@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="grid text-gray-500 font-mono">
-      <p className="m-auto mx-5 my-5 ">
+      <p className="sm:m-auto py-10 px-5">
         apa yang ingin anda lakukan hari ini...
       </p>
       <Input state={text} onchange={onchange} onsubmit={onsubmit} />
